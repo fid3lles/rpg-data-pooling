@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(15, 15, 15);
+    display: flex;
+    justify-content: center;
+}
+
+#agent-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+}
+
+.agent-image {
+    height: 160px;
+    width: 160px;
+}
+
+.agent-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.agent-card {
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    padding: 10px;
+}
+
+.agent-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    padding-left: 25px;
+    margin-right: 65px;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "rpg-data-pooling",
+  "version": "1.0.0",
+  "description": "A data pool for the CRIS system of the RPG Ordem Paranormal",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "github.com/fid3lles",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pooling de dados RPG</title>
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+    <div id="agent-wrapper">
+        <div class="agent-card">
+            <div class="agent-image">
+                <img id="agent-photo" src="">
+            </div>
+            <div class="agent-info">
+                <p>
+                    Pontos de vida: <span id="life-points"></span>
+                </p>
+                <p>
+                    Pontos de sanidade: <span id="sanity-points"></span>
+                </p>
+                <p>
+                    Pontos de esforço: <span id="effort-points"></span>
+                </p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <div class="agent-image">
+                <img id="agent-photo" src="">
+            </div>
+            <div class="agent-info">
+                <p>
+                    Pontos de vida: <span id="life-points"></span>
+                </p>
+                <p>
+                    Pontos de sanidade: <span id="sanity-points"></span>
+                </p>
+                <p>
+                    Pontos de esforço: <span id="effort-points"></span>
+                </p>
+            </div>
+        </div>
+        <div class="agent-card">
+            <div class="agent-image">
+                <img id="agent-photo" src="">
+            </div>
+            <div class="agent-info">
+                <p>
+                    Pontos de vida: <span id="life-points"></span>
+                </p>
+                <p>
+                    Pontos de sanidade: <span id="sanity-points"></span>
+                </p>
+                <p>
+                    Pontos de esforço: <span id="effort-points"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    const ip = 'localhost';
+    const port = 3000;
+    const apiBaseHref = `http://${ip}:${port}`;
+
+    function getData(){
+        $.get(`${apiBaseHref}/userinfo`, function (data) {
+            document.getElementById("agent-photo").src = data[0].photourl;
+            document.getElementById("life-points").textContent = data[0].hp;
+            document.getElementById("sanity-points").textContent = data[0].san;
+            document.getElementById("effort-points").textContent = data[0].ep; 
+        });
+    }
+
+    //CLIENT SCRIPTS (JQUERY NÃO PERMITIDO):
+    var agent = {};
+
+    //Use essa função para inicializar o pooling de dados para o servidor
+    function poolingInitialize(agentId){
+
+    }
+
+    //Coleta os dados do CRIS
+    function getDataFromCRIS(){
+        let agentNewData = {};
+
+        let inputBars = document.querySelectorAll('.info-bar-input');
+        
+        let photoUrl = document.querySelector('.profile-picture').src,
+            hp = (inputBars[0].value + " / " + inputBars[1].value),
+            san = (inputBars[2].value + " / " + inputBars[3].value),
+            ep = (inputBars[4].value + " / " + inputBars[5].value);
+
+        agentNewData.photourl = photoUrl;
+        agentNewData.hp = hp;
+        agentNewData.san = san;
+        agentNewData.ep = ep;
+
+        return agentNewData;
+    }
+
+    //Envia os dados do seu personagem para o servidor
+    function sendDataToOBS(){
+        fetch('http://localhost:3000/userinfo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(agent)
+        })
+        .then(response => response.json())
+        .catch(error => console.error(error));
+    }
+    
+</script>
+</html>
