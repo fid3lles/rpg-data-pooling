@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -17,7 +18,6 @@ app.listen(port, () => {
 });
 
 app.use('/', express.static(path.join(__dirname + '/public')));
-
 
 var agents = [
     {
