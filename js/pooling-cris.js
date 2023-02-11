@@ -1,10 +1,14 @@
+//Setup
+const baseUri = 'http://localhost:3000';
+const agentId = 'felipe-consolas';
+
 //HTML element references
 var statusButtonsRef = document.querySelectorAll('.info-bar-button');
 var inputBars = document.querySelectorAll('.info-bar-input');
 
 //Agent data
 var agent = {
-    id: 'felipe-consolas',
+    id: agentId,
     hp: '',
     san: '',
     ep: ''
@@ -41,7 +45,7 @@ statusButtonsRef.forEach((btn, i) => {
 
 //Sending data to server
 function sendDataToOBS(){    
-    fetch('http://localhost:3000/userinfo', {
+    fetch(`${baseUri}/userinfo`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -81,15 +81,12 @@
 <script>
 
     //Server configurations
-    const ip = 'localhost';
-    const port = 3000;
-    const apiBaseHref = `http://${ip}:${port}`;
     const agentsWrapper = document.getElementsByClassName("agent-card");
 
     //Data consulting
     function refreshData(){
         console.log('refreshing data');
-        $.get(`${apiBaseHref}/userinfo`, function (data) {
+        $.get('/userinfo', function (data) {
             data.forEach(agent => {
                 for(e of agentsWrapper){
                     if(e.id == agent.id){
