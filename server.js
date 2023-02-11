@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const baseURI = process.env.API_BASE_URI || "http://localhost";
 const port = process.env.PORT || 3000;
 
 app.use(cors());
@@ -14,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.listen(port, () => {
-    console.log(`Servidor rodando em ${baseURI}:${port}`);
+    console.log(`Servidor rodando na porta ${port}`);
 });
 
 app.use('/', express.static('public'));
